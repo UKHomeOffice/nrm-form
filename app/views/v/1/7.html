@@ -1,0 +1,49 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What's your reference for this report? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='8' method='post'>
+    
+    
+                <h1 class='govuk-heading-l'>What's your reference for this report?</h1>   
+
+                <p>This is for you to keep track of your saved reports. It won’t be included in submissions to the Home Office.</p>
+                
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '7',
+                    name: '7',
+                    value: data['7'],
+                    hint: {
+                        html: '<p>We may refer to this in emails so be careful about using victims’ personal 
+details. Use first names and not full names, for example.</p>'
+                    },
+                    label: {
+                        text: 'Your reference',
+                        classes: 'govuk-label--m',
+                        isPageHeading: false
+                    }
+                }) }}
+
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+					{{ govukButton({
+						href: '6',
+						classes: 'govuk-button--secondary',
+						text: 'Save and exit'
+					}) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,38 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block headIcons %}
+{% endblock %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% block header %}
+
+{{ govukHeader() }}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{{ govukServiceNavigation({
+        serviceName: serviceName,
+        serviceUrl: "/v/1/home",
+        navigation: [
+            {
+                href: "/v/1/6",
+                text: "Reports dashboard",
+                active: activeLinkId == "home"
+            },
+            {
+                href: "/v/1/1",
+                text: "Sign out"
+            }
+        ]
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
