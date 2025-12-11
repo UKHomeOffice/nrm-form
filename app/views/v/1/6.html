@@ -23,11 +23,20 @@
             <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">1346-7984</th>
-                    <td class="govuk-table__cell">12 July 2025</td>
+                    <td class="govuk-table__cell">30 July 2025</td>
                     <td class="govuk-table__cell">12 August 2025</td>
-                    <td class="govuk-table__cell">25</td>
+                    <td class="govuk-table__cell">13</td>
                     <td class="govuk-table__cell"><a href="#">Open</a></td>
                 </tr>
+                {% if (data['report-status']) %}
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">{{data['7']}}</th>
+                    <td class="govuk-table__cell">12 July 2025</td>
+                    <td class="govuk-table__cell">30 August 2025</td>
+                    <td class="govuk-table__cell">31</td>
+                    <td class="govuk-table__cell"><a href="#">Open</a></td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
 
