@@ -1,33 +1,59 @@
 {% extends 'layouts/v1.html' %}
     
     {% block pageTitle %}
-        Is the potential victim missing​? – {{ serviceName }} – GOV.UK Prototype Kit
+        Does the child know they have been referred into the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
     
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
-            <form action='n2' method='post'>
+            <form action='pt-bridge-2' method='post'>
     
                 <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: 'n7-1',
+                        name: 'n7-1',
+                        value: data['n7-1'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Details',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: '<p>Tell us any concerns you have, including any meetings you have planned in the next two weeks to discuss these.</p>'
+                        }
+                    }) }} 
+                {% endset %}
     
                 {% from 'govuk/components/radios/macro.njk' import govukRadios %}
                 {{ govukRadios({
-                    id: 'n1',
-                    name: 'n1',
-                    value: data['n1'],
+                    id: 'n7',
+                    name: 'n7',
+                    value: data['n7'],
                     fieldset: {
                         legend: {
-                            text: 'Is the potential victim missing or out of contact?',
+                            text: 'Are there any immediate safeguarding risks?',
                             classes: 'govuk-fieldset__legend--l',
                             isPageHeading: true
                         }
                     },
+                    hint: {
+                        html: '<p><a href="#">Read more about safeguarding risks in the guidance. </a></p>'
+                    },
                     items: [
                     {
                        value: 'Yes',
-                        text: 'Yes'
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
                     },
                     {
                        value: 'No',

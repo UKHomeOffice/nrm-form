@@ -1,25 +1,42 @@
 {% extends 'layouts/v1.html' %}
     
     {% block pageTitle %}
-        Is the potential victim missing​? – {{ serviceName }} – GOV.UK Prototype Kit
+        Does the Figure of Parental Responsibility (FOPR) know about the referral?​ – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
     
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
-            <form action='n2' method='post'>
+            <form action='/route-v-1/pt-end' method='post'>
     
                 <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: 'n12-1',
+                        name: 'n12-1',
+                        value: data['n12-1'],
+                        maxlength: 15000,
+                        label: {
+                            text: "Tell us why the child's FOPR doesn't know about the referral",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }} 
+                {% endset %}
     
                 {% from 'govuk/components/radios/macro.njk' import govukRadios %}
                 {{ govukRadios({
-                    id: 'n1',
-                    name: 'n1',
-                    value: data['n1'],
+                    id: 'n12',
+                    name: 'n12',
+                    value: data['n12'],
                     fieldset: {
                         legend: {
-                            text: 'Is the potential victim missing or out of contact?',
+                            text: 'Does the Figure of Parental Responsibility (FOPR) know about the referral?​',
                             classes: 'govuk-fieldset__legend--l',
                             isPageHeading: true
                         }
@@ -31,11 +48,10 @@
                     },
                     {
                        value: 'No',
-                        text: 'No'
-                    },
-                    {
-                       value: "I don't know",
-                        text: "I don't know"
+                        text: 'No',
+                        conditional: {
+                            html: cond
+                        }
                     }
                     ]
                 }) }}

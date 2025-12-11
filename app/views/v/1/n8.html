@@ -1,47 +1,57 @@
 {% extends 'layouts/v1.html' %}
     
     {% block pageTitle %}
-        Is the potential victims's age disputed​? – {{ serviceName }} – GOV.UK Prototype Kit
+        What is the potential victim's immigration status​? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
     
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
-            <form action='/route-v-1/n2' method='post'>
+            <form action='56' method='post'>
     
                 <span class='govuk-caption-l'></span>
     
                 {% from 'govuk/components/radios/macro.njk' import govukRadios %}
                 {{ govukRadios({
-                    id: 'n2',
-                    name: 'n2',
-                    value: data['n2'],
+                    id: 'n8',
+                    name: 'n8',
+                    value: data['n8'],
                     fieldset: {
                         legend: {
-                            text: "Is the potential victims's age disputed​?",
+                            text: "What is the potential victim's immigration status​?",
                             classes: 'govuk-fieldset__legend--l',
                             isPageHeading: true
                         }
                     },
-                    hint: {
-                        html: '<p>Treat the potential victim as under 18 if there are reasonable grounds to suspect they may be a child until a formal age assessment or official determination is made.</p>'
-                    },
                     items: [
                     {
-                       value: 'Yes',
-                        text: 'Yes'
+                       value: 'Limited Leave',
+                        text: 'Limited Leave'
                     },
                     {
-                       value: 'No',
-                        text: 'No'
+                       value: 'Indefinite Leave to Remain (ILR)',
+                        text: 'Indefinite Leave to Remain (ILR)'
                     },
                     {
-                       value: "I don't know",
-                        text: "I don't know"
+                       value: 'Settled Status (EU Settlement Scheme)',
+                        text: 'Settled Status (EU Settlement Scheme)'
+                    },
+                    {
+                       value: 'Asylum and Humanitarian Protection',
+                        text: 'Asylum and Humanitarian Protection'
+                    },
+                    {
+                       value: 'British Citizenship',
+                        text: 'British Citizenship'
+                    },
+                    {
+                       value: 'Other',
+                        text: 'Other'
                     }
                     ]
                 }) }}
+            
     
                 <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
                     {{ govukButton({

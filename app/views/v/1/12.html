@@ -9,7 +9,7 @@ during the exploitation? – {{ serviceName }} – GOV.UK Prototype Kit
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
-            <form action='n2' method='post'>
+            <form action='n1' method='post'>
     
                 <span class='govuk-caption-l'></span>
     
@@ -20,14 +20,10 @@ during the exploitation? – {{ serviceName }} – GOV.UK Prototype Kit
                     value: data['n2'],
                     fieldset: {
                         legend: {
-                            text: 'Were they under 18 at any time
-during the exploitation?',
+                            text: 'Were they under 18 at any time during the exploitation?',
                             classes: 'govuk-fieldset__legend--l',
                             isPageHeading: true
                         }
-                    },
-                    hint: {
-                        html: 'Hint text to explain what disputed means. '
                     },
                     items: [
                     {

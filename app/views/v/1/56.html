@@ -1,49 +1,62 @@
 {% extends 'layouts/v1.html' %}
     
     {% block pageTitle %}
-        Is the potential victims's age disputed​? – {{ serviceName }} – GOV.UK Prototype Kit
+        Do they have any Home Office references? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
     
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
-            <form action='/route-v-1/n2' method='post'>
+            <form action='/route-v-1/56' method='post'>
     
                 <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '56-1',
+                        name: '56-1',
+                        value: data['56-1'],
+                        label: {
+                            text: 'Enter type of reference, reference number or both',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
     
                 {% from 'govuk/components/radios/macro.njk' import govukRadios %}
                 {{ govukRadios({
-                    id: 'n2',
-                    name: 'n2',
-                    value: data['n2'],
+                    id: '56',
+                    name: '56',
+                    value: data['56'],
                     fieldset: {
                         legend: {
-                            text: "Is the potential victims's age disputed​?",
+                            text: 'Do they have any Home Office references?',
                             classes: 'govuk-fieldset__legend--l',
                             isPageHeading: true
                         }
                     },
                     hint: {
-                        html: '<p>Treat the potential victim as under 18 if there are reasonable grounds to suspect they may be a child until a formal age assessment or official determination is made.</p>'
+                        html: '<p>For example, a Home Office visa application or port reference</p>'
                     },
                     items: [
                     {
                        value: 'Yes',
-                        text: 'Yes'
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
                     },
                     {
                        value: 'No',
                         text: 'No'
-                    },
-                    {
-                       value: "I don't know",
-                        text: "I don't know"
                     }
                     ]
                 }) }}
     
-                <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
                     {{ govukButton({
                         text: 'Save and continue'
                     }) }}

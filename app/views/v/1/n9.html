@@ -1,0 +1,90 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the child have a Figure of Parental Responsibility (FOPR)? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n10' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    <h2 class='govuk-heading-s'>Full name of the FOPR</h2> 
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n9-1',
+                        name: 'n9-1',
+                        value: data['n9-1'],
+                        label: {
+                            text: 'First name',
+                            classes: 'govuk-label--xs',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n9-2',
+                        name: 'n9-2',
+                        value: data['n9-2'],
+                        label: {
+                            text: 'Last name',
+                            classes: 'govuk-label--xs',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n9',
+                    name: 'n9',
+                    value: data['n9'],
+                    fieldset: {
+                        legend: {
+                            text: 'Does the child have a Figure of Parental Responsibility (FOPR)?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>A FOPR could include a:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>foster carer</li>
+                            <li>parent or guardian</li>
+                            <li>family member</li>
+                            <li>supported accommodation or lodgings key worker</li>
+                            <li>prison or detention maker</li>
+                        </ul>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the potential victim consent to having their case referred to the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-1/45' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set hintText %}
+                    <p> If a potential victim wants you to refer their case, they can get:</p>
+                    <ul class='govuk-list govuk-list--bullet'>
+                        <li>access to support (for example, housing and legal advice)</li>
+                        <li>a formal decision – this can help if they’re being prosecuted for a crime they were compelled to commit</li>
+                    </ul>
+                    {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                        
+                    {{ govukWarningText({
+                        text: 'Potential victims need to give informed consent to enter the National Referral Mechanism (NRM) and access support. ',
+                        iconFallbackText: 'Warning'
+                    }) }}
+                    <p>You should:</p>
+                    <ul class='govuk-list govuk-list--bullet'>
+                        <li>make sure that the potential victim understands by entering the NRM they are consenting to a reasonable grounds and conclusive grounds decision being made</li>
+                        <li>make sure that potential victim understands the support that they may be able to receive, as detailed in the guidance (see section 'Support for Adult Victims'). This may require the assistance of an appropriate interpreter.</li>
+                        <li>explain to the potential victim the ways in which the Home Office may process their personal information, including the purposes for which it will be used, the legal basis and who it will be shared with. You can find this information in the Privacy Information Notice and Personal Information Charter.</li>
+                    </ul>
+
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '45',
+                    name: '45',
+                    value: data['45'],
+                    fieldset: {
+                        legend: {
+                            text: 'Does the potential victim consent to having their case referred to the NRM?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: hintText
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes – I have explained this to the potential victim along with the Privacy Information Notice and they give consent for me to refer their case.'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No – I have explained this to the potential victim and they do not give consent for me to refer their case. They understand their case will not be referred to the NRM and they will not receive support or a formal decision.'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
