@@ -1,0 +1,76 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What is the role of the child's Figure of Parental Responsibility (FOPR)? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n11' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n10',
+                    name: 'n10',
+                    value: data['n10'],
+                    fieldset: {
+                        legend: {
+                            text: "What is the role of the child's Figure of Parental Responsibility (FOPR)?",
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Parent',
+                        text: 'Parent'
+                    },
+                    {
+                       value: 'Guardian',
+                        text: 'Guardian'
+                    },
+                    {
+                       value: 'Family member',
+                        text: 'Family member'
+                    },
+                    {
+                       value: 'Foster carer',
+                        text: 'Foster carer'
+                    },
+                    {
+                       value: 'Social worker',
+                        text: 'Social worker'
+                    },
+                    {
+                       value: 'Supported accommodation or lodgings key worker',
+                        text: 'Supported accommodation or lodgings key worker'
+                    },
+                    {
+                       value: 'Prison or detention worker',
+                        text: 'Prison or detention worker'
+                    },
+                    {
+                       value: "I don't know",
+                        text: "I don't know"
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

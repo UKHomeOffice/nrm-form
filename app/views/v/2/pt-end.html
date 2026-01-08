@@ -1,0 +1,166 @@
+{% extends 'layouts/v1.html' %}
+
+{% block pageTitle %}
+Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+<div class='govuk-grid-row'>
+    <div class='govuk-grid-column-full'>
+        <form action='6' method='post'>
+
+            <span class='govuk-caption-l'></span>
+
+            <h1 class='govuk-heading-l'>Check your answers</h1>
+
+            <h2 class='govuk-heading-m'>Your report</h2>
+
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Your reference
+                        <p class="govuk-hint">This will not be included in the report</p>
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['7']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="7">Change<span class="govuk-visually-hidden"> Your reference</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Your organisation 
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['8']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="8">Change<span class="govuk-visually-hidden"> date of
+                                birth</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Location of report
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['9']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="9">Change<span class="govuk-visually-hidden"> Location of report</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Under 18
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['10']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="10">Change<span class="govuk-visually-hidden"> under 18</span></a>
+                    </dd>
+                </div>
+                {% if (data['10'] == 'No') %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Under 18 when exploited
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['12']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="12">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+                {% else %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Potential victim missing
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['n1']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="n1">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>                
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name of local authority
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['11-name']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="11">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Phone number of local authority
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['11-phone']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="11">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Email of local authority
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['11-email']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="11">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name of contact at the local authority
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['11-contact-firstname']}} {{data['11-contact-lastname']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="11">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+                {% endif %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Potential victim's age disputed
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data['n2']}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="n2">Change<span class="govuk-visually-hidden"> Under 18 when exploited</span></a>
+                    </dd>
+                </div>
+
+            </dl>
+
+
+
+
+            <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                {{ govukButton({
+                text: 'Save and continue'
+                }) }}
+                <!-- {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }} -->
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

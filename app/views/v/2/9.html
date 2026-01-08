@@ -1,0 +1,59 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What organisation do you work for? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='10' method='post'>
+    
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '9',
+                    name: '9',
+                    value: data['9'],
+                    fieldset: {
+                        legend: {
+                            text: 'What organisation do you work for?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'England',
+                        text: 'England'
+                    },
+                    {
+                       value: 'Wales',
+                        text: 'Wales'
+                    },
+                    {
+                       value: 'Scotland',
+                        text: 'Scotland'
+                    },
+                    {
+                       value: 'Northern Ireland',
+                        text: 'Northern Ireland'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

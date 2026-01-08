@@ -1,0 +1,45 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What organisation do you work for? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='9' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>What organisation do you work for?</h1>     
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '8',
+                    name: '8',
+                    value: data['8'],
+                    label: {
+                        text: 'Organisation',
+                        classes: 'govuk-label--m',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: '<p>Start typing the name of your organisation. It must appear on the list for you to be able to continue.</p>'
+                    }
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

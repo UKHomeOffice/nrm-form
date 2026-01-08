@@ -1,0 +1,59 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Is the potential victims's age disputed​? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-2/n2' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n2',
+                    name: 'n2',
+                    value: data['n2'],
+                    fieldset: {
+                        legend: {
+                            text: "Is the potential victim currently involved in an age assessment or age dispute process?",
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>If there are reasonable grounds to believe the potential victim may be under 18, treat them as a child until a formal age assessment or official determination is made. During the age dispute process, the potential victim is eligible for support.</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    },
+                    {
+                       value: "I don't know",
+                        text: "I don't know"
+                    }
+                    ]
+                }) }}
+    
+                <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Is the potential victim involved with the Criminal Justice System? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='42' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cjsOther %}
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: 'n3-other',
+                    name: 'n3-other',
+                    value: data['n3-other'],
+                    label: {
+                        text: "Describe the potential victim's involvement with the Criminal Justice System",
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+                {% endset %}
+
+                    
+                <h1 class='govuk-heading-l'>Involvement with the Criminal Justice System</h1> 
+                <p>We only need to know if this involvement is linked to the exploitations. This helps assess risk and provide appropriate support.</p>
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: 'n3',
+                    name: 'n3',
+                    values: data['n3'],
+                    fieldset: {
+                        legend: {
+                            text: 'How is the potential victim involved with the Criminal Justice System?',
+                            classes: 'govuk-fieldset__legend--m',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Witness',
+                        text: 'Witness'
+                    },
+                    {
+                       value: 'Victim',
+                        text: 'Victim'
+                    },
+                    {
+                       value: 'Arrested',
+                        text: 'Arrested'
+                    },
+                    {
+                       value: 'Charged',
+                        text: 'Charged'
+                    },
+                    {
+                       value: 'Reported',
+                        text: 'Reported'
+                    },
+                    {
+                       value: 'Other',
+                        text: 'Other',
+                        conditional: {
+                            html: cjsOther
+                        }
+                    },
+                    {
+                        divider: "or"
+                    },
+                    {
+                       value: "I don't know",
+                        text: "I don't know",
+                        behaviour: "exclusive"
+                    },
+                    {
+                       value: "Not involved",
+                        text: "Not involved",
+                        behaviour: "exclusive"
+                    }
+                    ]
+                }) }}
+
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What is the potential victim's immigration status​? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='56' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+
+                {% set iOther %}
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: 'n8-other',
+                    name: 'n8-other',
+                    value: data['n8-other'],
+                    label: {
+                        text: "Describe the potential victim's immigration status",
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n8',
+                    name: 'n8',
+                    value: data['n8'],
+                    fieldset: {
+                        legend: {
+                            text: "What is the potential victim's immigration status​?",
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Limited Leave',
+                        text: 'Limited Leave'
+                    },
+                    {
+                       value: 'Indefinite Leave to Remain (ILR)',
+                        text: 'Indefinite Leave to Remain (ILR)'
+                    },
+                    {
+                       value: 'Settled Status (EU Settlement Scheme)',
+                        text: 'Settled Status (EU Settlement Scheme)'
+                    },
+                    {
+                       value: 'Asylum and Humanitarian Protection',
+                        text: 'Asylum and Humanitarian Protection'
+                    },
+                    {
+                       value: 'British Citizenship',
+                        text: 'British Citizenship'
+                    },
+                    {
+                       value: 'Other',
+                        text: 'Other',
+                        conditional: {
+                            html: iOther
+                        }
+                    },
+                    {
+                       value: "I don't know",
+                        text: "I don't know"
+                    }
+                    ]
+                }) }}
+            
+    
+                <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

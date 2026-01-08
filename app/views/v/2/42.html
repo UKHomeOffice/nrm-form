@@ -1,0 +1,95 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Do they have a crime reference number
+related to any reported Modern 
+Slavery crime, in which they are a 
+victim? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='43' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '42-police',
+                        name: '42-police',
+                        value: data['42-police'],
+                        label: {
+                            text: 'Select police force',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: '<p>Start typing the police force. It must appear on the list for you to be able to continue.</p>'
+                        }
+                    }) }}
+
+                    {{ govukInput({
+                        id: '42-cad',
+                        name: '42-cad',
+                        value: data['42-cad'],
+                        label: {
+                            text: 'Enter crime or CAD reference',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                
+                    {% endset %}
+
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '42',
+                    name: '42',
+                    value: data['42'],
+                    fieldset: {
+                        legend: {
+                            text: 'Do they have a crime reference number
+related to any reported Modern 
+Slavery crime, in which they are a 
+victim?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>We only need to know the reference (if they have one) for this referral.</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
