@@ -11,8 +11,12 @@
         <h1 class="govuk-heading-xl">
             {{ serviceName }}
         </h1>
-
-        <a href="/v/1/6">Start here</a>
+        {{ govukButton({
+            href: '2/start',
+            isStartButton: false,
+            classes: '',
+            text: 'Start'
+        }) }}
 
     </div>
 </div>
