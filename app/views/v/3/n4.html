@@ -1,0 +1,80 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the child know they have been referred into the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n6' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: 'n4-1',
+                        name: 'n4-1',
+                        value: data['n4-1'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Why has the child has not been informed that they have been referred into the NRM​?',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }} 
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n4',
+                    name: 'n4',
+                    value: data['n4'],
+                    fieldset: {
+                        legend: {
+                            text: 'Have you told the child they have been referred into the NRM?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: "<p>Where possible, you should:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>help the child understand that they have been referred into the NRM, what this means for them, and what will happen next</li>
+                            <li>keep the child informed using trauma‑informed, age‑appropriate communication in a language they understand</li>
+                            <li><a href='#'>share the support pack with the child</a> to help explain the process and support available</li>
+                        </ul>"
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No',
+                        conditional: {
+                            html: cond
+                        }
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Is the potential victim under 18? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/10' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '10',
+                    name: '10',
+                    value: data['10'],
+                    fieldset: {
+                        legend: {
+                            text: 'Is the potential victim under 18?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: "<p>If you're not sure of the potential victim's age, you'll need to refer them to the relevant local authority for an age assessment. They will continue to be treated as a child until a decision on their age is made.</p>
+                        <p>If they're under 18 or you're not sure, you must explain to them how organisations such as the Home Office will use their information. </p>"
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    },
+                    {
+                       value: 'Not sure',
+                        text: 'Not sure'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

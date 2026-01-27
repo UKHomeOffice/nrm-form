@@ -1,0 +1,47 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        PROTOTYPING PAGE – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n3' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Victim experience</h1> 
+
+                <p>As part of the prototyping testing process, the Victim experience section is largely being skipped. This section covers the following main areas:</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                    <li>Potential victim's background</li>
+                    <li>Details of the potential victim's exploitation
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>Places of exploitation</li>
+                            <li>Dates of exploitation</li>
+                            <li>Their treatment</li>
+                        </ul>
+                    </li>
+                    <li>Modern slavery indicators and professional insight</li>
+                    <li>Where the potential victim was exploited</li>
+                    <li>Details of the exploiters</li>
+                    <li>Other potential victims</li>
+                    <li>Concerns over re-exploitation</li>
+                </ul>
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

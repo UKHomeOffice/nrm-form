@@ -1,0 +1,99 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Tell us about the potential victim's background – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='14' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Tell us about the potential victim's background</h1> 
+
+                <p>You only need to provide this background information if you have it. Do not probe for this information if the potential victim feels uncomfortable.</p>
+                <p>This can help support people as it makes sure we have a brief account of their background before the exploitation. </p>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '13-place',
+                    name: '13-place',
+                    value: data['13-place'],
+                    label: {
+                        text: 'Place of birth',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: 'Include the country and town or village they were born in.'
+                    }
+                }) }}
+
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '13-family',
+                    name: '13-family',
+                    value: data['13-family'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Their family',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: 'Include information about who their family is, for example their parents and siblings.'
+                    }
+                }) }} 
+
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '13-education',
+                    name: '13-education',
+                    value: data['13-education'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Education',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: 'Include details of any education they might have had, for example the school they went to and when. '
+                    }
+                }) }} 
+
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '13-employment',
+                    name: '13-employment',
+                    value: data['13-employment'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Previous employment history ',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: 'Only include their employment history before the exploitative situation.'
+                    }
+                }) }} 
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

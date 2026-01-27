@@ -1,0 +1,66 @@
+{% extends "layouts/v1.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+        <h1 class="govuk-heading-l">
+            Draft reports
+        </h1>
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Your reference </th>
+                    <th scope="col" class="govuk-table__header">Created on </th>
+                    <th scope="col" class="govuk-table__header">Expires on </th>
+                    <th scope="col" class="govuk-table__header">Days remaining </th>
+                    <th scope="col" class="govuk-table__header">Next steps</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">1346-7984</th>
+                    <td class="govuk-table__cell">30 July 2025</td>
+                    <td class="govuk-table__cell">12 August 2025</td>
+                    <td class="govuk-table__cell">13</td>
+                    <td class="govuk-table__cell"><a href="10?7=1234-5678&8=DRS&9=England">Open</a></td>
+                </tr>
+                {% if (data['report-status']) %}
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">{{data['7']}}</th>
+                    <td class="govuk-table__cell">12 July 2025</td>
+                    <td class="govuk-table__cell">30 August 2025</td>
+                    <td class="govuk-table__cell">31</td>
+                    <td class="govuk-table__cell"><a href="10?7=1234-5678&8=DRS&9=England">Open</a></td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+            
+        {{ govukWarningText({
+            text: 'If you do not do anything for 60 minutes, you will be signed out and lose any unsaved progress. ',
+            iconFallbackText: 'Warning'
+        }) }}
+
+        <h2 class='govuk-heading-m'>Create a new report</h2> 
+        <p>Create your report to notify the Home Office of modern slavery and refer potential victims for support.</p>
+        <p>You have 28 calendar days to update or submit your report, after which it will be deleted.</p>
+        <p>If you don't do anything for 1 hour, you will be logged out for security. </p>
+
+        {% from 'govuk/components/button/macro.njk' import govukButton %}
+
+        {{ govukButton({
+        href: '7',
+        classes: '',
+        text: 'Create report'
+        }) }}
+
+    </div>
+</div>
+
+{% endblock %}

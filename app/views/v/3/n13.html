@@ -1,0 +1,350 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the child know they have been referred into the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='pt-end' method='post'>
+    
+                <span class='govuk-caption-l'>PR: {{data['n9']}} // Concerns: {{data['n11']}}</span>
+
+                {% set cond1 %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n13-1',
+                        name: 'n13-1',
+                        value: data['n13-1'],
+                        label: {
+                            text: "What is the child's telephone number?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+
+                {% set cond2 %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n13-2',
+                        name: 'n13-2',
+                        value: data['n13-2'],
+                        label: {
+                            text: "What is the telephone number of the child's "+data['n9']+"?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+
+                {% set cond3 %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n13-3',
+                        name: 'n13-3',
+                        value: data['n13-3'],
+                        label: {
+                            text: "What is the telephone number of the Local Authority contact?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+
+                {% set cond4 %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n13-4-name',
+                        name: 'n13-4-name',
+                        value: data['n13-4-name'],
+                        label: {
+                            text: "Name of contact",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n13-4-phone',
+                        name: 'n13-4-phone',
+                        value: data['n13-4-phone'],
+                        label: {
+                            text: "Their contact telephone number",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n13-4-relationship',
+                        name: 'n13-4-relationship',
+                        value: data['n13-4-relationship'],
+                        label: {
+                            text: "Relationship to child",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+
+
+                {% set warning %}
+                    {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                        
+                    {{ govukWarningText({
+                        text: 'If you provide a telephone number, check that the details you provide are safe and could not potentially put the child in danger.',
+                        iconFallbackText: 'Warning'
+                    }) }}
+                {% endset %}
+    
+
+                {% if (data['pr'] == "dont-know") %}
+                <!-- doesn't know who has PR -->
+
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n13',
+                    name: 'n13',
+                    value: data['n13'],
+                    fieldset: {
+                        legend: {
+                            text: 'How can the support provider safely contact the child?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: warning
+                    },
+                    items: [
+                    {
+                       value: 'Contact the child',
+                        text: 'Contact the child',
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: "Contact the Local Authority ("+data['11-name']+")",
+                        text: "Contact the Local Authority ("+data['11-name']+")",
+                        conditional: {
+                            html: cond3
+                        }
+                    },
+                    {
+                       value: 'Contact someone else',
+                        text: 'Contact someone else',
+                        conditional: {
+                            html: cond4
+                        }
+                    }
+
+                    ]
+                }) }}
+
+                {% else %}
+                    <!-- knows who has PR -->
+
+                    {% if (data['n9'] == 'Local Authority') %}
+                    <!-- LA has PR, so don't provide default LA option -->
+
+                        {% if (data['n11'] == 'Yes') %}
+                        <!-- FR has concerns w PR -->
+
+                            {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                            {{ govukRadios({
+                                id: 'n13',
+                                name: 'n13',
+                                value: data['n13'],
+                                fieldset: {
+                                    legend: {
+                                        text: 'How can the support provider safely contact the child?',
+                                        classes: 'govuk-fieldset__legend--l',
+                                        isPageHeading: true
+                                    }
+                                },
+                                hint: {
+                                    html: warning
+                                },
+                                items: [
+                                {
+                                value: 'Contact the child',
+                                    text: 'Contact the child',
+                                    conditional: {
+                                        html: cond1
+                                    }
+                                },
+                                {
+                                value: 'Contact someone else',
+                                    text: 'Contact someone else',
+                                    conditional: {
+                                        html: cond4
+                                    }
+                                }
+
+                                ]
+                            }) }}
+
+                        {% else %}
+                        <!-- FR doesn't have concerns w PR -->
+
+                            {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                            {{ govukRadios({
+                                id: 'n13',
+                                name: 'n13',
+                                value: data['n13'],
+                                fieldset: {
+                                    legend: {
+                                        text: 'How can the support provider safely contact the child?',
+                                        classes: 'govuk-fieldset__legend--l',
+                                        isPageHeading: true
+                                    }
+                                },
+                                hint: {
+                                    html: warning
+                                },
+                                items: [
+                                {
+                                value: 'Contact the child',
+                                    text: 'Contact the child',
+                                    conditional: {
+                                        html: cond1
+                                    }
+                                },
+                                {
+                                value: "Contact the Local Authority ("+data['11-name']+")",
+                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                    conditional: {
+                                        html: cond3
+                                    }
+                                },
+                                {
+                                value: 'Contact someone else',
+                                    text: 'Contact someone else',
+                                    conditional: {
+                                        html: cond4
+                                    }
+                                }
+
+                                ]
+                            }) }}
+
+                        {% endif %}
+
+                    {% else %}
+                    <!-- LA doesn't have PR, so provide default LA option -->
+
+                        {% if (data['n11'] == 'Yes') %}
+                        <!-- FR has concerns w PR -->
+                            {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                            {{ govukRadios({
+                                id: 'n13',
+                                name: 'n13',
+                                value: data['n13'],
+                                fieldset: {
+                                    legend: {
+                                        text: 'How can the support provider safely contact the child?',
+                                        classes: 'govuk-fieldset__legend--l',
+                                        isPageHeading: true
+                                    }
+                                },
+                                hint: {
+                                    html: warning
+                                },
+                                items: [
+                                {
+                                value: 'Contact the child',
+                                    text: 'Contact the child',
+                                    conditional: {
+                                        html: cond1
+                                    }
+                                },
+                                {
+                                value: "Contact the Local Authority ("+data['11-name']+")",
+                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                    conditional: {
+                                        html: cond3
+                                    }
+                                },
+                                {
+                                value: 'Contact someone else',
+                                    text: 'Contact someone else',
+                                    conditional: {
+                                        html: cond4
+                                    }
+                                }
+
+                                ]
+                            }) }}
+
+                        {% else %}
+                        <!-- FR doesn't have concerns w PR -->
+                            {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                            {{ govukRadios({
+                                id: 'n13',
+                                name: 'n13',
+                                value: data['n13'],
+                                fieldset: {
+                                    legend: {
+                                        text: 'How can the support provider safely contact the child?',
+                                        classes: 'govuk-fieldset__legend--l',
+                                        isPageHeading: true
+                                    }
+                                },
+                                hint: {
+                                    html: warning
+                                },
+                                items: [
+                                {
+                                value: 'Contact the child',
+                                    text: 'Contact the child',
+                                    conditional: {
+                                        html: cond1
+                                    }
+                                },
+                                {
+                                value: "Contact the child's "+data['n9'],
+                                    text: "Contact the child's "+data['n9'],
+                                    conditional: {
+                                        html: cond2
+                                    }
+                                },
+                                {
+                                value: "Contact the Local Authority ("+data['11-name']+")",
+                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                    conditional: {
+                                        html: cond3
+                                    }
+                                },
+                                {
+                                value: 'Contact someone else',
+                                    text: 'Contact someone else',
+                                    conditional: {
+                                        html: cond4
+                                    }
+                                }
+
+                                ]
+                            }) }}
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

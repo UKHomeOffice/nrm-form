@@ -1,0 +1,86 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Is the potential victim willing to help with investigations or criminal proceedings into their exploitation? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/section-3' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                <h1 class='govuk-heading-l'>Co-operation with public authorities</h1> 
+
+                <p>The UK public authorities (such as law enforcement agencies) may 
+investigate or undertake criminal proceedings into any incidents you’ve reported in this referral.</p>
+
+                {% set cond %}
+
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '43-details',
+                        name: '43-details',
+                        value: data['43-details'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Details of co-operation with authorities',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: "<p>Details about the individual's existing or planned co-operation (optional)</p>"
+                        }
+                    }) }} 
+                
+                {% endset %}
+
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '43',
+                    name: '43',
+                    value: data['43'],
+                    fieldset: {
+                        legend: {
+                            text: 'Is the potential victim willing to help with investigations or criminal proceedings into their exploitation?',
+                            classes: 'govuk-fieldset__legend--m',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>If you are unsure, save your progress and check with them</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
