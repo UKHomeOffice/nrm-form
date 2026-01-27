@@ -1,0 +1,89 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Is the potential victim under 18? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/10' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+                <h1 class='govuk-heading-l'>How was the potential victim treated during their exploitation?</h1> 
+                <p>As the potential victim has been in more than one exploitive situation, you should include all details from each exploitation in your answer.</p>
+
+                {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+                    
+                {{ govukInsetText({
+                  text: 'At the end of the service, you can add information you want to keep private, which will only be seen by the Competent Authority (CA) and the police.'
+                }) }}
+
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '18-1',
+                    name: '18-1',
+                    value: data['18-1'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'What they had to do',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: '<p>Include details of what were they had to do, how many hours a day they worked and whether any breaks were allowed.</p>'
+                    }
+                }) }} 
+    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '18-2',
+                    name: '18-2',
+                    value: data['18-2'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Their living conditions',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: '<p>Include details of their accommodation and whether there was access to facilities, such as a bathroom, sleeping arrangements and food.</p>'
+                    }
+                }) }} 
+    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '18-3',
+                    name: '18-3',
+                    value: data['18-3'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Their treatment',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: '<p>Detail how they were treated by the person or people who exploited them.
+Explain whether they were forcibly detained, whether threats, force or 
+coercion were used against them, whether their documents were removed from them.</p>'
+                    }
+                }) }} 
+    
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
