@@ -1,0 +1,62 @@
+{% extends "layouts/v1.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+        <h1 class="govuk-heading-l">
+            Report modern slavery
+        </h1>
+
+        <p> If you’re a first responder working for a designated organisation like the police, you can use this service to:</p>
+        <ul class='govuk-list govuk-list--bullet'>
+            <li>refer potential victims of any age to the National Referral Mechanism</li>
+            <li>help potential victims receive support and medical care</li>
+            <li>notify the Home Office of potential victims (Duty to Notify)</li>
+        </ul>
+        <p>When you are reporting a potential victim of modern slavery who does not consent to being entered into the NRM, you will complete a Duty to Notify as part of this report. </p>
+
+        <h2 class='govuk-heading-m'>Before you start</h2> 
+        <p>You will need to give your email address to securely access the service.</p>
+        <p>You can upload files as supporting evidence at the end of this service. You do not need to copy and paste the same information across different questions, as we can see all of the answers you provide.</p>
+
+        {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+            
+        {{ govukInsetText({
+          text: 'At the end of the service, you can add information you want to keep private, which will only be seen by the Competent Authority (CA) and the police.'
+        }) }}
+        <p>You could read the First responder guide: Referring victims of modern slavery and human trafficking which includes information about what makes a good referral and tips to help first responders complete this report.</p>
+        <p>You can download and print the NRM prompt sheet to help you. It has the questions you will need to ask and the type of information we need. You must complete this online report after the interview, or the potential victim will not be referred.</p>
+        
+
+
+        {% from 'govuk/components/button/macro.njk' import govukButton %}
+            
+        {{ govukButton({
+            href: '7',
+            isStartButton: true,
+            classes: '',
+            text: 'Start now'
+        }) }}
+
+        <h2 class='govuk-heading-m'>Report modern slavery if you are not a first responder</h2> 
+        <p>You can still report modern slavery as a member of the public, or report it yourself if you are a potential victim. Call the modern slavery helpline on 0800 0121 700 or <a href="#">report it online</a>.</p>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third-from-desktop">
+        <h2 class='govuk-heading-s'>Related content</h2> 
+        <ul class='govuk-list'>
+            <p><a href="#">Guidance on The National Referral Mechanism (NRM) and Duty to Notify</a></p>
+            <p><a href="#">Find a support provider</a></p>
+            <p><a href="#">Download report questions</a></p>
+            <p><a href="#">NRM toolkit for first responders in Scotland</a></p>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}
