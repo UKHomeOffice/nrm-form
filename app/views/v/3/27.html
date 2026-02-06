@@ -1,0 +1,57 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Your professional insight – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='28' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% set hint %}
+                    <p>Using your professional judgement, provide any relevant information about why you are making this referral. </p>
+                    
+                    {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+                        
+                    {{ govukInsetText({
+                      text: 'At the end of the service, you can add information you want to keep private, which will only be seen by the Competent Authority (CA) and the police.'
+                    }) }}
+
+
+                {% endset %}
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '27',
+                    name: '27',
+                    value: data['27'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Your professional insight',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: hint
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

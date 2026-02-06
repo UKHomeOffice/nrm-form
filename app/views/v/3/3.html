@@ -1,0 +1,27 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Check your email – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='5' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Check your email   </h1> 
+                <p>We have sent a link to the email you entered, {% if (data['2']) %}{{data['2']}}{% else %}Joe.Bloggs@homeoffice.gov.uk{% endif %}. If you can't find the email, check your spam or junk folders.</p>
+                <p>If you haven't received the email, you can <a href="2">resend the link or enter a new email address</a>.</p>
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Continue'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

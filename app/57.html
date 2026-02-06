@@ -1,0 +1,56 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Who should we send our decision to? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/57' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '57',
+                    name: '57',
+                    value: data['57'],
+                    fieldset: {
+                        legend: {
+                            text: 'Who should we send our decision to?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p> We cannot send our decision to the potential victim unless they have an email or postal address.</p>
+                        <p>If they don’t have either, they can choose for someone else to receive it on their behalf (for example a support provider or legal representative).</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Potential victim',
+                        text: 'Potential victim'
+                    },
+                    {
+                       value: 'Someone else',
+                        text: 'Someone else'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

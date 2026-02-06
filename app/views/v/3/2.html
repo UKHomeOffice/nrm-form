@@ -1,0 +1,38 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What is your work email address? –  {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='3' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '2',
+                    name: '2',
+                    value: data['2'],
+                    label: {
+                        text: 'What is your work email address?',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: '<p> We need to email you a secure link so you can access the service.</p>'
+                    }
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Send secure link'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

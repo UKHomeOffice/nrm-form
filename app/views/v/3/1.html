@@ -34,12 +34,21 @@
 
         {% from 'govuk/components/button/macro.njk' import govukButton %}
             
+        {% if (data['e2e'] == 'Yes') %}
         {{ govukButton({
-            href: '7',
+            href: '2',
             isStartButton: true,
             classes: '',
             text: 'Start now'
         }) }}
+        {% else %}
+        {{ govukButton({
+            href: '6',
+            isStartButton: true,
+            classes: '',
+            text: 'Start now'
+        }) }}
+        {% endif %}
 
         <h2 class='govuk-heading-m'>Report modern slavery if you are not a first responder</h2> 
         <p>You can still report modern slavery as a member of the public, or report it yourself if you are a potential victim. Call the modern slavery helpline on 0800 0121 700 or <a href="#">report it online</a>.</p>

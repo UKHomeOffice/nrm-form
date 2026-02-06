@@ -1,0 +1,56 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Why doesn't the potential victim want their case referred to the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='dtn1' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+                {% set hint %}
+                    <p>The potential victim has said they don’t want you to refer their case to the National Referral Mechanism (NRM). They understand they will not get support or a formal decision.</p>
+                    {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+                        
+                    {{ govukInsetText({
+                      text: "We still need to tell the police and other organisations about their case 
+(Duty to Notify). The potential victim's details will remain anonymous in a Duty to Notify referral, unless they agree to co-operate with public authorities."
+                    }) }}
+                    <p><strong>Briefly explain why the potential victim doesn't want their case referred.</strong></p>
+                {% endset %}
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '46',
+                    name: '46',
+                    value: data['46'],
+                    maxlength: 15000,
+                    label: {
+                        text: "Why doesn't the potential victim want their case referred to the NRM?",
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: hint
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

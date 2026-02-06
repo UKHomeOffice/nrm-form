@@ -1,0 +1,138 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        How can the support provider contact the potential victim? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='49' method='post'>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% set cond1 %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '48-1',
+                        name: '48-1',
+                        value: data['48-1'],
+                        label: {
+                            text: "Enter the potential victim's telephone number",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset -%}
+                    
+                {% set cond2 %}
+                    <h2 class='govuk-heading-s'>Enter a telephone number so we can contact the potential victim and explain who this is, for example, a legal representative. </h2> 
+                    {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                        
+                    {{ govukWarningText({
+                        text: 'Make sure this person is safe to be contacted. Check that these are not the contact details of the exploiters. ',
+                        iconFallbackText: 'Warning'
+                    }) }}
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '48-2-1',
+                        name: '48-2-1',
+                        value: data['48-2-1'],
+                        label: {
+                            text: 'Alternative telephone number',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: '48-2-2',
+                        name: '48-2-2',
+                        value: data['48-2-2'],
+                        label: {
+                            text: 'Relationship to potential victim',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset -%}
+                    
+                {% set cond3 %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '48-3',
+                        name: '48-3',
+                        value: data['48-3'],
+                        maxlength: 15000,
+                        label: {
+                            text: "Tell us why you cannot provide the potential victim's telephone number, for example you are no longer in contact with them, or they don't have a phone.",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: '<p>If the potential victim wants to receive support and does not have a telephone number, you can <a href="#">contact the support provider (opens in new tab)</a> for them.</p>'
+                        }
+                    }) }} 
+                {% endset -%}
+                    
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '48',
+                    name: '48',
+                    value: data['48'],
+                    fieldset: {
+                        legend: {
+                            text: 'How can the support provider contact the potential victim?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: "<p>If the potential victim wants to receive support and does not have a telephone number, you can <a href='#'>contact the support provider (opens in new tab)</a> for them.</p>
+                        <p>This will help facilitate contact between the support provider and the potential victim, so that they can be entered into Modern Slavery Victim Care Contract support.</p>
+                        <p>If the potential victim does not have their own telephone number, you can provide alternative contact details. Make sure you explain who's contact details these are, check they agree and are safe to be contacted.</p>"
+                    },
+                    items: [
+                    {
+                       value: "Potential victim's telephone number",
+                        text: "Potential victim's telephone number",
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: "Alternative telephone number",
+                        text: "Alternative telephone number",
+                        conditional: {
+                            html: cond2
+                        }
+                    },
+                    {
+                       value: "Cannot provide contact details",
+                        text: "Cannot provide contact details",
+                        conditional: {
+                            html: cond3
+                        }
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

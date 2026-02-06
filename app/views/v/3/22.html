@@ -1,0 +1,54 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Tell us about the last contact between the potential victim and their exploiters – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='23' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '22',
+                    name: '22',
+                    value: data['22'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Tell us about the last contact between the potential victim and their exploiters',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: "<p>To assess the risk that the potential victim may be exploited or trafficked again, we need to know about any communication between them and their exploiters.</p>
+                        <p>You can upload any files as supporting evidence at the end of this service.</p>
+                        <p>Provide information about:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>how they communicated and what was said</li>
+                            <li>who was involved</li>
+                            <li>any threats that the exploiters made</li>
+                            <li>if the potential victim has taken any steps to prevent contact with their exploiters</li>
+                        </ul>"
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

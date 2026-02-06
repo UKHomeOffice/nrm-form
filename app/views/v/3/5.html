@@ -1,0 +1,26 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Continue to your report – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='6' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Continue to your report   </h1> 
+                <p>This completes your secure access to this service.</p>
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Start'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

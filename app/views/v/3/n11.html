@@ -4,7 +4,9 @@
         If it is safe to contact the child's Figure of Parental Responsibility (FOPR)? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
-    
+    {% set laName %}{% if (data['la'] == 'trust') %}Trust{% else %}Local authority{% endif %}{% endset %}
+    {% set laType %}{% if (data['la'] == 'trust') %}trust{% else %}local authority{% endif %}{% endset %}
+
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>

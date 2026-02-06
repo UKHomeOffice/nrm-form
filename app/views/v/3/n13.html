@@ -4,11 +4,17 @@
         Does the child know they have been referred into the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
+    {% set laName %}{% if (data['la'] == 'trust') %}Trust{% else %}Local authority{% endif %}{% endset %}
+    {% set laType %}{% if (data['la'] == 'trust') %}trust{% else %}local authority{% endif %}{% endset %}
     
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
+            {% if (data['e2e'] == 'Yes') %}
+            <form action='60' method='post'>
+            {% else %}
             <form action='nd' method='post'>
+            {% endif %}
     
                 <span class='govuk-caption-l'></span>
 
@@ -47,7 +53,7 @@
                         name: 'n13-3',
                         value: data['n13-3'],
                         label: {
-                            text: "What is the telephone number of the Local Authority contact?",
+                            text: "What is the telephone number of the "+laType+" contact?",
                             classes: 'govuk-label--s',
                             isPageHeading: false
                         }
@@ -126,8 +132,8 @@
                         }
                     },
                     {
-                       value: "Contact the Local Authority ("+data['11-name']+")",
-                        text: "Contact the Local Authority ("+data['11-name']+")",
+                       value: "Contact the "+laType+" ("+data['11-name']+")",
+                        text: "Contact the "+laType+" ("+data['11-name']+")",
                         conditional: {
                             html: cond3
                         }
@@ -146,7 +152,7 @@
                 {% else %}
                     <!-- knows who has PR -->
 
-                    {% if (data['n9'] == 'Local Authority') %}
+                    {% if (data['n9'] == 'local authority' or data['n9'] == 'trust') %}
                     <!-- LA has PR, so don't provide default LA option -->
 
                         {% if (data['n11'] == 'Yes') %}
@@ -213,8 +219,8 @@
                                     }
                                 },
                                 {
-                                value: "Contact the Local Authority ("+data['11-name']+")",
-                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                value: "Contact the "+laType+" ("+data['11-name']+")",
+                                    text: "Contact the "+laType+" ("+data['11-name']+")",
                                     conditional: {
                                         html: cond3
                                     }
@@ -261,8 +267,8 @@
                                     }
                                 },
                                 {
-                                value: "Contact the Local Authority ("+data['11-name']+")",
-                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                value: "Contact the "+laType+" ("+data['11-name']+")",
+                                    text: "Contact the "+laType+" ("+data['11-name']+")",
                                     conditional: {
                                         html: cond3
                                     }
@@ -311,8 +317,8 @@
                                     }
                                 },
                                 {
-                                value: "Contact the Local Authority ("+data['11-name']+")",
-                                    text: "Contact the Local Authority ("+data['11-name']+")",
+                                value: "Contact the "+laType+" ("+data['11-name']+")",
+                                    text: "Contact the "+laType+" ("+data['11-name']+")",
                                     conditional: {
                                         html: cond3
                                     }

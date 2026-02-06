@@ -1,0 +1,95 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Which local authority have you
+contacted about the child? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n1' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Which {{data['la']}} have you contacted about the child?</h1> 
+                <p>You must contact the relevant {{data['la']}} to safeguard the child before continuing.</p>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '11-name',
+                    name: '11-name',
+                    value: data['11-name'],
+                    label: {
+                        text: 'Name of '+data['la'],
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: 'Start typing the '+data['la']+'. It must appear on the list for you to be able to continue.'
+                    }
+                }) }}
+
+                {{ govukInput({
+                    id: '11-phone',
+                    name: '11-phone',
+                    value: data['11-phone'],
+                    label: {
+                        text: 'Enter phone number of '+data['la'],
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+                {{ govukInput({
+                    id: '11-email',
+                    name: '11-email',
+                    value: data['11-email'],
+                    label: {
+                        text: 'Enter email address of '+data['la'],
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+                {{ govukInput({
+                    id: '11-contact-firstname',
+                    name: '11-contact-firstname',
+                    value: data['11-contact-firstname'],
+                    label: {
+                        text: 'Enter first name of '+data['la']+' contact (if known)',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+                {{ govukInput({
+                    id: '11-contact-lastname',
+                    name: '11-contact-lastname',
+                    value: data['11-contact-lastname'],
+                    label: {
+                        text: 'Enter last name of '+data['la']+' contact (if known)',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+
+
+
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

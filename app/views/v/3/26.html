@@ -1,0 +1,55 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Tell us about the interviews – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='27' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '26',
+                    name: '26',
+                    value: data['26'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Tell us about the interviews',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: "<p>This is to help us understand the context of when and how you spoke to the potential victim about the exploitation.</p>
+                        <p>You could include:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>where the conversations or interviews happened</li>
+                            <li>how you met them</li>
+                            <li>whether they needed to take breaks and why</li>
+                            <li>whether there were any safeguarding concerns, including physical and mental health</li>
+                            <li>who was there, for example, an interpreter or police officer </li>
+                            <li>how they appeared, for example their physical appearance, body language or demeanour</li>
+                        </ul>"
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -27,8 +27,8 @@
                     <p>You should:</p>
                     <ul class='govuk-list govuk-list--bullet'>
                         <li>make sure that the potential victim understands by entering the NRM they are consenting to a reasonable grounds and conclusive grounds decision being made</li>
-                        <li>make sure that potential victim understands the support that they may be able to receive, as detailed in the guidance (see section 'Support for Adult Victims'). This may require the assistance of an appropriate interpreter.</li>
-                        <li>explain to the potential victim the ways in which the Home Office may process their personal information, including the purposes for which it will be used, the legal basis and who it will be shared with. You can find this information in the Privacy Information Notice and Personal Information Charter.</li>
+                        <li>make sure that potential victim understands the support that they may be able to receive, as detailed in the <a href="#">guidance (see section 'Support for Adult Victims')</a>. This may require the assistance of an appropriate interpreter.</li>
+                        <li>explain to the potential victim the ways in which the Home Office may process their personal information, including the purposes for which it will be used, the legal basis and who it will be shared with. You can find this information in the <a href="#">Privacy Information Notice and Personal Information Charter</a>.</li>
                     </ul>
 
                 {% endset %}
@@ -56,6 +56,10 @@
                     {
                        value: 'No',
                         text: 'No – I have explained this to the potential victim and they do not give consent for me to refer their case. They understand their case will not be referred to the NRM and they will not receive support or a formal decision.'
+                    },
+                    {
+                       value: 'Unable',
+                        text: 'No – I have not been unable to explain the NRM to the potential victim as I cannot contact them. Therefore, I am unable to refer them into the NRM.'
                     }
                     ]
                 }) }}

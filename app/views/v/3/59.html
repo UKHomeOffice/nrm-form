@@ -1,0 +1,157 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        How should they be contacted? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='60' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% set cond1 %}
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '59-1-1',
+                    name: '59-1-1',
+                    value: data['59-1-1'],
+                    label: {
+                        text: 'Email address',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '59-1-2',
+                    name: '59-1-2',
+                    values: data['59-1-2'],
+                    fieldset: {
+                        legend: {
+                            text: 'It is safe to write to them here',
+                            classes: 'govuk-fieldset__legend--s hidden',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'It is safe to write to them here',
+                        text: 'It is safe to write to them here'
+                    }
+                    ]
+                }) }}
+                {% endset %}
+                
+                {% set cond2 %}
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% from 'govuk/components/fieldset/macro.njk' import govukFieldset %}
+                    
+                {% call govukFieldset({
+                    legend: {
+                        text: 'What is your address?',
+                        classes: 'govuk-fieldset__legend--s hidden',
+                        isPageHeading: false
+                    }
+                }) %}
+                    
+                {{ govukInput({
+                    label: {
+                        text: 'Building and street'
+                   },
+                   id: '59-2-line-1',
+                   name: '59-2-line-1',
+                   autocomplete: 'address-line1'
+                }) }}
+                    
+                    
+                    {{ govukInput({
+                    label: {
+                        text: 'Town or city'
+                    },
+                    classes: 'govuk-!-width-two-thirds',
+                    id: '59-2-town',
+                    name: '59-2-town',
+                    autocomplete: 'address-level2'
+                }) }}
+
+                    {{ govukInput({
+                    label: {
+                        text: 'County (optional)'
+                    },
+                    classes: 'govuk-!-width-two-thirds',
+                    id: '59-2-region',
+                    name: '59-2-region',
+                    autocomplete: 'region'
+                }) }}
+                    
+                {{ govukInput({
+                    label: {
+                        text: 'Postcode'
+                    },
+                    classes: 'govuk-input--width-10',
+                    id: '59-2-postcode',
+                    name: '59-2-postcode',
+                    autocomplete: 'postal-code'
+                }) }}
+                    
+                    
+                {% endcall %}
+                    
+                {% endset %}
+                    
+    
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '59',
+                    name: '59',
+                    values: data['59'],
+                    fieldset: {
+                        legend: {
+                            text: 'How should they be contacted?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: 'Select all that apply'
+                    },
+                    items: [
+                    {
+                       value: 'Email',
+                        text: 'Email',
+                        hint: {
+                            html: 'Only enter an email address that is specific to the potential victim'
+                        },
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: 'Post',
+                        text: 'Post',
+                        conditional: {
+                            html: cond2
+                        }
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What are your contact details? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='61' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>What are your contact details?</h1> 
+
+                <p><strong>Email</strong><br>
+                    This is the address you gave at the start of the form.<br>
+                    {% if (data['2']) %}{{data['2']}} {% else %}test.test@homeoffice.gov.uk{% endif %}</p>
+                <p><strong>Organisation</strong><br>
+                    This is the organisation you gave at the start of the form.<br>
+                    {% if (data['8']) %}{{data['8']}} {% else %}Home Office - UK Visas and Immigration UKVI{% endif %}</p>
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '60-1',
+                        name: '60-1',
+                        value: data['60-1'],
+                        label: {
+                            text: 'First name',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: '60-2',
+                        name: '60-2',
+                        value: data['60-2'],
+                        label: {
+                            text: 'Last name',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: '60-3',
+                        name: '60-3',
+                        value: data['60-3'],
+                        label: {
+                            text: 'Role',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: '60-4',
+                        name: '60-4',
+                        value: data['60-4'],
+                        label: {
+                            text: 'Phone number',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

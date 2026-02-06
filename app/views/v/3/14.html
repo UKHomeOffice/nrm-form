@@ -1,0 +1,60 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Has the potential victim been in more than one exploitative situation? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/14' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '14',
+                    name: '14',
+                    value: data['14'],
+                    fieldset: {
+                        legend: {
+                            text: 'Has the potential victim been in more than one exploitative situation?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>This can be any other type of exploitation (for example criminal, sexual, labour, domestic servitude) and a different type to the one that started the referral.</p>
+                        <p>This is so we can collect all the relevant information about the potential victim and their exploitation.</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    },
+                    {
+                       value: "I don't know",
+                        text: "I don't know"
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

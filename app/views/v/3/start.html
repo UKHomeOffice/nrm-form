@@ -10,12 +10,18 @@
             Version 3
         </h1>
 
+        <h2 class='govuk-heading-m'>End to end NRM form</h2> 
         <ul class='govuk-list govuk-list--bullet'>
-            <li><a href="1">Service landing page</a></li>
-            <li><a href="6">Logged in start</a></li>
-            <li><a href="10">PV age</a></li>
-            <li><a href="n4?route=child&10=yes">Case reporting (child path)</a></li>
-            <li><a href="n9?route=child&10=yes">FOPR (child path)</a></li>
+            <li><a href="1?e2e=Yes">Start</a></li>
+        </ul>
+
+        <h2 class='govuk-heading-m'>Specific points</h2> 
+        <ul class='govuk-list govuk-list--bullet'>
+            <li><a href="1?e2e=No">Service landing page</a></li>
+            <li><a href="6?e2e=No">Logged in start</a></li>
+            <li><a href="10?e2e=No">PV age</a></li>
+            <li><a href="n4?e2e=No&route=child&10=yes&la=local authority">Case reporting (child path)</a></li>
+            <li><a href="n9?e2e=No&route=child&10=yes&la=local authority">FOPR (child path)</a></li>
         </ul>
         {% from 'govuk/components/button/macro.njk' import govukButton %}
             

@@ -4,7 +4,9 @@
         Does the child have a Figure of Parental Responsibility (FOPR)? – {{ serviceName }} – GOV.UK Prototype Kit
     {% endblock %}
     
-    
+    {% set laName %}{% if (data['la'] == 'trust') %}Trust{% else %}Local authority{% endif %}{% endset %}
+    {% set laType %}{% if (data['la'] == 'trust') %}trust{% else %}local authority{% endif %}{% endset %}
+
     {% block content %}
     <div class='govuk-grid-row'>
         <div class='govuk-grid-column-two-thirds-from-desktop'>
@@ -103,7 +105,7 @@
                         name: 'n9-7',
                         value: data['n9-7'],
                         label: {
-                            text: 'Full name of the Local Authority',
+                            text: 'Full name of the '+laType,
                             classes: 'govuk-label--xs',
                             isPageHeading: false
                         }
@@ -184,10 +186,10 @@
                         }
                     },
                     {
-                       value: 'Local Authority',
-                        text: 'Local Authority ('+data['11-name']+')',
+                       value: laType,
+                        text: laName+' ('+data['11-name']+')',
                         hint: {
-                            html: 'You have already told us the name and details of the Local Authority, earlier in the form.'
+                            html: 'You have already told us the name and details of the '+laType+', earlier in the form.'
                         }
                     },
                     {

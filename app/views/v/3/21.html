@@ -1,0 +1,77 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        When were the potential victim and
+exploiters last in contact? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='22' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '21',
+                    name: '21',
+                    value: data['21'],
+                    fieldset: {
+                        legend: {
+                            text: 'When were the potential victim and exploiters last in contact?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>This includes in person conversations, phone calls, instant messages, emails, writing, or communicating through another person.</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Within the last week',
+                        text: 'Within the last week'
+                    },
+                    {
+                       value: 'Within the last month',
+                        text: 'Within the last month'
+                    },
+                    {
+                       value: 'Within the last 3 months',
+                        text: 'Within the last 3 months'
+                    },
+                    {
+                       value: 'Within the last 6 months',
+                        text: 'Within the last 6 months'
+                    },
+                    {
+                       value: 'Within the last 6-12 months',
+                        text: 'Within the last 6-12 months'
+                    },
+                    {
+                       value: 'Over a year ago',
+                        text: 'Over a year ago'
+                    },
+                    {
+                       value: 'Not sure',
+                        text: 'Not sure'
+                    }
+                    ]
+                }) }}
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the potential victim want support? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/47' method='post'>
+
+                {% set hint %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                    <span class="govuk-visually-hidden">Warning</span>
+                    Make sure you <a href="#">contact the support provider (opens in new tab)</a> as soon as possible if the potential victim needs emergency housing.
+                    </strong>
+                </div>
+
+                <p>Support to enable ongoing recovery may include:</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                    <li>safe housing</li>
+                    <li>support to access medical treatment</li>
+                    <li>someone to help them cope with their experience</li>
+                    <li>protection from the people who exploited them</li>
+                    <li>help to access independent legal advice</li>
+                    <li>financial support</li>
+                </ul>
+
+                {% endset %}
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '47',
+                    name: '47',
+                    value: data['47'],
+                    fieldset: {
+                        legend: {
+                            text: 'Does the potential victim want support?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: hint
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes'
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

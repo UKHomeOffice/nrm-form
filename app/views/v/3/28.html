@@ -1,0 +1,91 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Do you have any concerns about the potential victim's credibility? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='29' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '28-cond',
+                        name: '28-cond',
+                        value: data['28-cond'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Evidence ',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }} 
+                {% endset %}
+
+                {% set hint %}
+                    <p>These concerns must be based on evidence. </p>
+                        <p>Do not include examples of them withholding or changing their information if you think they have done this because they:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>have fears for their safety</li>
+                            <li>are trying to avoid reliving their trauma</li>
+                        </ul>
+                        <p>You can upload any files as supporting evidence at the end of this service, for example, a police report.</p>
+                        {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+                            
+                        {{ govukInsetText({
+                          text: 'At the end of the service, you can add information you want to keep private, which will only be seen by the Competent Authority (CA) and the police.'
+                        }) }}
+                {% endset %}
+
+            
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '28',
+                    name: '28',
+                    value: data['28'],
+                    fieldset: {
+                        legend: {
+                            text: "Do you have any concerns about the potential victim's credibility?",
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: hint
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

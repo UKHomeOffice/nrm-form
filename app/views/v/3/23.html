@@ -1,0 +1,101 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Has the potential victim reported this before? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-3/23' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond1 %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '23-cond1',
+                        name: '23-cond1',
+                        value: data['23-cond1'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Provide more information (optional)',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: '<p>If you know them, include any NRM or Home Office reference numbers.</p>'
+                        }
+                    }) }} 
+                {% endset %}
+                {% set cond2 %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '23-cond2',
+                        name: '23-cond2',
+                        value: data['23-cond2'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Provide more information (optional)',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: '<p>If you know them, include any NRM or Home Office reference numbers.</p>'
+                        }
+                    }) }} 
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '23',
+                    name: '23',
+                    value: data['23'],
+                    fieldset: {
+                        legend: {
+                            text: 'Has the potential victim reported this before?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    },
+                    {
+                       value: 'Not sure',
+                        text: 'Not sure',
+                        conditional: {
+                            html: cond2
+                        }
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

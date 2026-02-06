@@ -1,0 +1,64 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What is the name of the potential victim? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='dtn4' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>What is the name of the potential victim?</h1> 
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: 'dtn3-1',
+                    name: 'dtn3-1',
+                    value: data['dtn3-1'],
+                    label: {
+                        text: 'First name',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+    
+                {{ govukInput({
+                    id: 'dtn3-2',
+                    name: 'dtn3-2',
+                    value: data['dtn3-2'],
+                    label: {
+                        text: 'Last name',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+    
+                {{ govukInput({
+                    id: 'dtn3-3',
+                    name: 'dtn3-3',
+                    value: data['dtn3-3'],
+                    label: {
+                        text: 'Nickname or name used during exploitation (Optional)',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

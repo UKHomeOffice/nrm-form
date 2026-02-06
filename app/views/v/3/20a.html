@@ -1,0 +1,55 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        How did the potential victim leave the exploitative situation?  – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='21' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+                {% set hint %}
+                    <p>Include: </p>
+                    <ul class='govuk-list govuk-list--bullet'>
+                        <li>how they left </li>
+                        <li>if it was their decision to leave</li>
+                        <li>if anyone helped them leave</li>
+                        <li>why they left at that time</li>
+                    </ul>
+                {% endset %}
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '20a',
+                    name: '20a',
+                    value: data['20a'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'How did the potential victim leave the exploitative situation? ',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: hint
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        When did the exploitations happen? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='16' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                <h1 class='govuk-heading-l'>When did the exploitation happen?</h1> 
+
+                    <p>If the potential victim doesn't know exact start and end dates, ask for a loose time frame (such as a month or year), how old they were, or if it was a recent incident.</p>
+                    
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '15a',
+                    name: '15a',
+                    value: data['15a'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Start date, end date and type of exploitations',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
