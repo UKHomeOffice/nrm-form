@@ -145,28 +145,60 @@
                     },                    items: [
                     {
                        value: 'parent',
-                        text: 'Parent'
+                        text: 'Parent',
+                        conditional: {
+                            html: cond1
+                        }
                     },
                     {
                        value: 'legal guardian',
-                        text: 'Legal guardian'
+                        text: 'Legal guardian',
+                        conditional: {
+                            html: cond2
+                        }
                     },
                     {
                        value: 'family member',
-                        text: 'Family member'
+                        text: 'Family member',
+                        conditional: {
+                            html: cond3
+                        }
                     },
                     {
                        value: 'foster carer',
-                        text: 'Foster carer'
+                        text: 'Foster carer',
+                        conditional: {
+                            html: cond4
+                        }
+                    },
+                    {
+                       value: 'social worker',
+                        text: 'Social worker',
+                        conditional: {
+                            html: cond5
+                        }
+                    },
+                    {
+                       value: 'supported accommodation or lodgings key worker',
+                        text: 'Supported accommodation or lodgings key worker',
+                        conditional: {
+                            html: cond6
+                        }
                     },
                     {
                        value: laType,
                         text: laName+' ('+data['11-name']+')',
                         hint: {
-                            html: 'You have already told us the local authority or trust earlier in the form. If the child has a social worker, or is in supported accommodation or detention, the parental responsibility will be with the relevant local authority or trust.'
+                            html: 'You have already told us the name and details of the '+laType+', earlier in the form.'
                         }
                     },
-
+                    {
+                       value: 'prison or detention worker',
+                        text: 'Prison or detention worker',
+                        conditional: {
+                            html: cond8
+                        }
+                    },
                     {
                        value: "I don't know",
                         text: "I don't know"

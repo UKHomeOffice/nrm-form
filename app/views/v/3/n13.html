@@ -35,9 +35,19 @@
                 {% set cond2 %}
                     {% from 'govuk/components/input/macro.njk' import govukInput %}
                     {{ govukInput({
-                        id: 'n13-2',
-                        name: 'n13-2',
-                        value: data['n13-2'],
+                        id: 'n13-2-1',
+                        name: 'n13-2-1',
+                        value: data['n13-2-1'],
+                        label: {
+                            text: "What is the name of the child's "+data['n9']+"?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n13-2-2',
+                        name: 'n13-2-2',
+                        value: data['n13-2-2'],
                         label: {
                             text: "What is the telephone number of the child's "+data['n9']+"?",
                             classes: 'govuk-label--s',
@@ -49,11 +59,31 @@
                 {% set cond3 %}
                     {% from 'govuk/components/input/macro.njk' import govukInput %}
                     {{ govukInput({
-                        id: 'n13-3',
-                        name: 'n13-3',
-                        value: data['n13-3'],
+                        id: 'n13-3-1',
+                        name: 'n13-3-1',
+                        value: data['n13-3-1'],
                         label: {
-                            text: "What is the telephone number of the "+laType+" contact?",
+                            text: "What is the name of the key contact at the "+laType+"?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n13-3-2',
+                        name: 'n13-3-2',
+                        value: data['n13-3-2'],
+                        label: {
+                            text: "What is the telephone number of the key contact at the "+laType+"?",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n13-3-3',
+                        name: 'n13-3-3',
+                        value: data['n13-3-3'],
+                        label: {
+                            text: "What is the role or professional capacity of the key contact at the "+laType+"?",
                             classes: 'govuk-label--s',
                             isPageHeading: false
                         }
@@ -96,6 +126,11 @@
 
 
                 {% set warning %}
+
+                    <p>A child’s phone number will only be used if no other contact method works and a risk assessment confirms it’s appropriate. A professional will always be contacted first. </p>
+                    <p>The SCA will never contact a child directly. For young people nearing adulthood, their phone number may be used to give information about consenting to remain in the NRM, but only when it is safe and appropriate.</p>
+
+
                     {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
                         
                     {{ govukWarningText({

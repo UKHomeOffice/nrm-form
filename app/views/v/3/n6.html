@@ -31,6 +31,17 @@
                         }
                     }) }} 
                 {% endset %}
+
+                {% set hint %}
+                
+                    <p>You must include any diagnosed or undiagnosed special education needs or disabilities.</p>
+                    {% from 'govuk/components/inset-text/macro.njk' import govukInsetText %}
+                        
+                    {{ govukInsetText({
+                    text: 'At the end of the service, you can provide information related to any ongoing criminal investigations. This information is non‑disclosable and will only be accessed by the relevant Competent Authority (CA) and the police.'
+                    }) }}
+
+                {% endset %}
     
                 {% from 'govuk/components/radios/macro.njk' import govukRadios %}
                 {{ govukRadios({
@@ -45,7 +56,7 @@
                         }
                     },
                     hint: {
-                        html: '<p>You must include any diagnosed or undiagnosed special education needs or disabilities.</p>'
+                        html: hint
                     },
                     items: [
                     {
