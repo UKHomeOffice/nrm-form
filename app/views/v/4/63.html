@@ -1,0 +1,51 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Tell us about the documents you uploaded  – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='nd' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '63',
+                    name: '63',
+                    value: data['63'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Tell us about the documents you uploaded ',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: "<p>Describe the supporting evidence and documents you uploaded.</p>
+                        <p>Include:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>a description of what each document is</li>
+                            <li>the date each document was created</li>
+                        </ul>"
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

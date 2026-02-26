@@ -1,0 +1,71 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Do they have any children? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='53' method='post'>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% set cond %}
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '52-1',
+                    name: '52-1',
+                    value: data['52-1'],
+                    label: {
+                        text: 'Enter number of children',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+                {% endset -%}
+                            
+
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '52',
+                    name: '52',
+                    value: data['52'],
+                    fieldset: {
+                        legend: {
+                            text: 'Do they have any children?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

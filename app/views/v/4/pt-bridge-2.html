@@ -1,0 +1,37 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        PROTOTYPING PAGE – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n8' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Victim details</h1> 
+
+                <p>As part of the prototyping testing process, a small section of the victim details section is also being skipped. This section covers the following main areas:</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                    <li>Name, Date of birth, gender and nationality of the potential victim</li>
+                    <li>Children of the potential victim</li>
+                    <li>Any language / interpreter needs</li>
+                </ul>
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

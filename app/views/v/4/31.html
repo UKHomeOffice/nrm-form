@@ -1,0 +1,71 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Where was the potential victim exploited in the UK? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            {% if (data['30'] == 'UK') %}
+            <form action='33' method='post'>
+            {% else %}
+            <form action='32' method='post'>
+            {% endif %}
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Where was the potential victim exploited in the UK?</h1> 
+
+                <p>If the exploitation happened in more than one location, add each one. If you cannot find the city or town on the list, enter 'Unknown'.</p>
+                <p>Provide any location details, such as the name of a village, in the 'Address or location' box. </p>
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '31-town',
+                    name: '31-town',
+                    value: data['31-town'],
+                    label: {
+                        text: 'Select city or town',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    }
+                }) }}
+                {{ govukButton({
+                    href: '#',
+                    classes: 'govuk-button--secondary',
+                    text: 'Add another'
+                }) }}
+
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '31-address',
+                    name: '31-address',
+                    value: data['31-address'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'Address or location',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: '<p>Provide any addresses, locations, or other details that may help us identify the location of the exploitations for example village names or landmarks.</p>'
+                    }
+                }) }} 
+    
+                <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

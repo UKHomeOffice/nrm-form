@@ -1,0 +1,71 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Do they need help with communication? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='n8' method='post'>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% set cond %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: '55-1',
+                        name: '55-1',
+                        value: data['55-1'],
+                        label: {
+                            text: 'Enter communication aid',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}                
+                {% endset -%}
+                    
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '55',
+                    name: '55',
+                    value: data['55'],
+                    fieldset: {
+                        legend: {
+                            text: 'Do they need help with communication?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

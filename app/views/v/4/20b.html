@@ -1,0 +1,55 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What is keeping the potential victim in the situation?  – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='21' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+                {% set hint %}
+                    <p>Include what reasons are preventing them from leaving the situation. For example, withheld documents, fear for their own or their family's safety or debt. </p>
+                    {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                        
+                    {{ govukWarningText({
+                        text: 'If you identify a potential victim of modern slavery, follow the safeguarding procedures set out by your organisation.',
+                        iconFallbackText: 'Warning'
+                    }) }}
+                {% endset %}
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '20b',
+                    name: '20b',
+                    value: data['20b'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'What is keeping the potential victim in the situation? ',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: hint
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

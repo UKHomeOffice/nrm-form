@@ -1,0 +1,54 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Upload supporting evidence and documents (optional) – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='63' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Upload supporting evidence and documents (optional)</h1> 
+                <p>You can upload documents that will help support the referral, such as:</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                    <li>local authority documents, for example risk assessments</li>
+                    <li>medical reports, for example a GP letter or medico legal report</li>
+                    <li>police documents, for example witness statements</li>
+                    <li>immigration documents, for example screening interviews</li>
+                    <li>support provider documents</li>
+                </ul>
+                <p>Your files must be:</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                    <li>a JPG, JPEG, PNG, PDF, DOC, or DOCX</li>
+                    <li>smaller than 25 megabytes (MB)</li>
+                </ul>
+                <p>You can add multiple files.</p>
+
+                {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+                {{ govukFileUpload({
+                    id: "62",
+                    name: "62",
+                    label: {
+                        text: "Upload file"
+                    }
+                    }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

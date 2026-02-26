@@ -1,0 +1,52 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        How did the exploitation start? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='17' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '16',
+                    name: '16',
+                    value: data['16'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'How did the exploitation start?',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: '<p>Include what:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>promises the exploiters made to the potential victim</li>
+                            <li>the potential victim expected to happen</li>
+                            <li>pay was promised</li>
+                        </ul>
+                        <p>As the potential victim has been in more than one exploitive situation, you should include all details from each exploitation in your answer.</p>'
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

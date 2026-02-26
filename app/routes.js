@@ -362,6 +362,223 @@ router.post('/route-v-3/pt-end', function(request, response) {
 
 
 
+// __     __            _               _  _   
+// \ \   / /__ _ __ ___(_) ___  _ __   | || |  
+//  \ \ / / _ \ '__/ __| |/ _ \| '_ \  | || |_ 
+//   \ V /  __/ |  \__ \ | (_) | | | | |__   _|
+//    \_/ \___|_|  |___/_|\___/|_| |_|    |_|  
+// https://www.asciiart.eu/text-to-ascii-art
+
+
+
+folder_route_v4 = '/v/4/'
+
+
+router.post('/route-v-4/10', function(request, response) {
+    var value = request.session.data['10']
+    if (value == 'No'){ 
+        response.redirect(folder_route_v4+'12?route=adult')
+    } else {
+        response.redirect(folder_route_v4+'n2?route=child')
+    } 
+})
+
+router.post('/route-v-4/n2', function(request, response) {
+    var child = request.session.data['10']
+    var e2e = request.session.data['e2e']
+    var nation = request.session.data['9']
+    if (e2e == 'Yes'){ 
+        if (child == 'No'){ 
+            response.redirect(folder_route_v4+'13')
+        } else {
+            if (nation == 'Northern Ireland'){ 
+                response.redirect(folder_route_v4+'11-ni?la=trust')
+            } else {
+                response.redirect(folder_route_v4+'11?la=local authority')
+            } 
+        } 
+    } else {
+        response.redirect(folder_route_v4+'pt-bridge')
+    }
+})
+
+
+router.post('/route-v-4/14', function(request, response) {
+    var value = request.session.data['14']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'15b')
+    } else {
+        response.redirect(folder_route_v4+'15a')
+    }
+})
+
+router.post('/route-v-4/18', function(request, response) {
+    var value = request.session.data['e2e']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'19')
+    } else {
+        response.redirect(folder_route_v4+'n3')
+    }
+})
+router.post('/route-v-4/19', function(request, response) {
+    var value = request.session.data['19']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'20b')
+    } else {
+        response.redirect(folder_route_v4+'20a')
+    }
+})
+
+router.post('/route-v-4/23', function(request, response) {
+    var value = request.session.data['19']
+    if (value == 'No'){ 
+        response.redirect(folder_route_v4+'24')
+    } else {
+        response.redirect(folder_route_v4+'25')
+    }
+})
+
+router.post('/route-v-4/30', function(request, response) {
+    var value = request.session.data['30']
+    if (value == 'Overseas'){ 
+        response.redirect(folder_route_v4+'32')
+    } else {
+        response.redirect(folder_route_v4+'31')
+    }
+})
+
+router.post('/route-v-4/35', function(request, response) {
+    var value = request.session.data['35']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'36')
+    } else {
+        response.redirect(folder_route_v4+'38')
+    }
+})
+router.post('/route-v-4/40', function(request, response) {
+    var value = request.session.data['40']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'41')
+    } else {
+        response.redirect(folder_route_v4+'n3')
+    }
+})
+router.post('/route-v-4/n3', function(request, response) {
+    var value = request.session.data['e2e']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'42')
+    } else {
+        response.redirect(folder_route_v4+'n4')
+    }
+})
+
+router.post('/route-v-4/43', function(request, response) {
+    var value = request.session.data['route']
+    if (value == 'adult'){ 
+        response.redirect(folder_route_v4+'45') // Adult form journey, part 1
+    } else {
+        response.redirect(folder_route_v4+'n4') // Child form journey, part 1
+    }
+})
+
+router.post('/route-v-4/45', function(request, response) {
+    var value = request.session.data['45']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'47')
+    } else if (value == 'Unable') {
+        response.redirect(folder_route_v4+'46')
+    } else {
+        response.redirect(folder_route_v4+'46')
+    }
+})
+
+router.post('/route-v-4/47', function(request, response) {
+    var value = request.session.data['47']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'48')
+    } else {
+        response.redirect(folder_route_v4+'49')
+    }
+})
+
+router.post('/route-v-4/section-3', function(request, response) {
+    var value = request.session.data['route']
+    if (value == 'adult'){ 
+        response.redirect(folder_route_v4+'45') // Adult form journey, part 1
+    } else {
+        response.redirect(folder_route_v4+'n1') // Child form journey, part 1
+    }
+})
+
+router.post('/route-v-4/n7', function(request, response) {
+    var value = request.session.data['e2e']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'49')
+    } else {
+        response.redirect(folder_route_v4+'pt-bridge-2')
+    }
+})
+
+router.post('/route-v-4/56', function(request, response) {
+    var value = request.session.data['route']
+    if (value == 'adult'){ 
+        response.redirect(folder_route_v4+'57') // Adult form journey, part 2
+    } else {
+        response.redirect(folder_route_v4+'n9') // Child form journey, part 2
+    }
+})
+router.post('/route-v-4/57', function(request, response) {
+    var value = request.session.data['57']
+    if (value == 'Potential victim'){ 
+        response.redirect(folder_route_v4+'59') // Adult form journey, part 2
+    } else {
+        response.redirect(folder_route_v4+'58') // Child form journey, part 2
+    }
+})
+
+router.post('/route-v-4/56', function(request, response) {
+    var value = request.session.data['route']
+    if (value == 'adult'){ 
+        response.redirect(folder_route_v4+'57') // Adult form journey, part 2
+    } else {
+        response.redirect(folder_route_v4+'n9') // Child form journey, part 2
+    }
+})
+
+router.post('/route-v-4/n9', function(request, response) {
+    var value = request.session.data['n9']
+    if (value == "I don't know"){ 
+        response.redirect(folder_route_v4+'n13?pr=dont-know')
+    } else if (value == "local authority"){ 
+        response.redirect(folder_route_v4+'n12?pr='+value)
+    } else if (value == "trust"){ 
+        response.redirect(folder_route_v4+'n12?pr='+value)
+    } else {
+        response.redirect(folder_route_v4+'n11?pr='+value)
+    }
+})
+// router.post('/route-v-4/n11', function(request, response) {
+//     var value = request.session.data['n11']
+//     if (value == 'Yes'){ 
+//         response.redirect(folder_route_v4+'n12?fopr=yes')
+//     } else {
+//         response.redirect(folder_route_v4+'n12?fopr=no')
+//     }
+// })
+
+
+router.post('/route-v-4/pt-end', function(request, response) {
+    var value = request.session.data['e2e']
+    if (value == 'Yes'){ 
+        response.redirect(folder_route_v4+'60')
+    } else {
+        response.redirect(folder_route_v4+'pt-end')
+    }
+})
+
+
+
+
 
 //  _____      _____ 
 // | ____|___ |  ___|

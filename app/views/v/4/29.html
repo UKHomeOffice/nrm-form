@@ -1,0 +1,84 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Are there other professionals or 
+organisations involved with this case? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='30' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '29-cond',
+                        name: '29-cond',
+                        value: data['29-cond'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Include any referrals made, actions already taken, reference numbers, or contact details.',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }} 
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '29',
+                    name: '29',
+                    value: data['29'],
+                    fieldset: {
+                        legend: {
+                            text: 'Are there other professionals or 
+organisations involved with this case?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: "<p>This could include a:</p>
+                        <ul class='govuk-list govuk-list--bullet'>
+                            <li>legal team</li>
+                            <li>GP</li>
+                            <li>Support worker</li>
+                            <li>Mental health worker</li>
+                            <li>Social worker</li>
+                        </ul>"
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

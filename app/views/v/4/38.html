@@ -1,0 +1,194 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        How were they exploited? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='39' method='post'>
+
+                {% set other %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '38-other',
+                        name: '38-other',
+                        value: data['38-other'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Enter other type of exploitation:',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }} 
+                {% endset %}
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>How were they exploited?</h1> 
+
+                <p class="govuk-hint">Select all that apply.</p>
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '38-1',
+                    name: '38-1',
+                    values: data['38-1'],
+                    fieldset: {
+                        legend: {
+                            text: 'Labour and financial exploitation',
+                            classes: 'govuk-fieldset__legend--s',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Forced to work for nothing or almost nothing',
+                        text: 'Forced to work for nothing or almost nothing',
+                        hint: {
+                            html: 'Victims may live in isolated areas or poor conditions, such as in  squats or at their place of work. They may be unable to leave and threatened with violence.'
+                        }
+                    },
+                    {
+                       value: 'Wages taken by force or coercion, such as through control of a bank account',
+                        text: 'Wages taken by force or coercion, such as through control of a bank account'
+                    },
+                    {
+                       value: 'Forced to commit fraud, such as using their identity to claim benefits',
+                        text: 'Forced to commit fraud, such as using their identity to claim benefits'
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '38-2',
+                    name: '38-2',
+                    values: data['38-2'],
+                    fieldset: {
+                        legend: {
+                            text: 'Sexual exploitation',
+                            classes: 'govuk-fieldset__legend--s',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Forced into prostitution',
+                        text: 'Forced into prostitution'
+                    },
+                    {
+                       value: 'Child sexual exploitation',
+                        text: 'Child sexual exploitation',
+                        hint: {
+                            html: 'This includes child sex trafficking'
+                        }
+                    },
+                    {
+                       value: 'Taken somewhere, held against their will and sexually assaulted',
+                        text: 'Taken somewhere, held against their will and sexually assaulted',
+                        hint: {
+                            html: 'This is different to rape'
+                        }
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '38-3',
+                    name: '38-3',
+                    values: data['38-3'],
+                    fieldset: {
+                        legend: {
+                            text: 'Criminal exploitation',
+                            classes: 'govuk-fieldset__legend--s',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Forced to commit a crime, such as growing cannabis, drug dealing or begging',
+                        text: 'Forced to commit a crime, such as growing cannabis, drug dealing or begging',
+                        hint: {
+                            html: 'This includes being used as a drug mule across county lines. Victims will often be unpaid although they may get food and somewhere to live'
+                        }
+                    },
+                    {
+                       value: 'Organs, such as kidneys, removed against their will',
+                        text: 'Organs, such as kidneys, removed against their will'
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '38-4',
+                    name: '38-4',
+                    values: data['38-4'],
+                    fieldset: {
+                        legend: {
+                            text: 'Domestic servitude',
+                            classes: 'govuk-fieldset__legend--s',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Forced to do unpaid or low paid household work by relatives or strangers',
+                        text: 'Forced to do unpaid or low paid household work by relatives or strangers',
+                        hint: {
+                            html: 'Victims who are exploited by relatives may have been forced into an arranged marriage and abused in other ways.'
+                        }
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: '38-5',
+                    name: '38-5',
+                    values: data['38-5'],
+                    fieldset: {
+                        legend: {
+                            text: 'Domestic servitude',
+                            classes: 'govuk-fieldset__legend--s hidden',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Other',
+                        text: 'Other',
+                        conditional: {
+                            html: other
+                        }
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                    
+                {{ govukWarningText({
+                    text: 'If you think they are a victim of another crime you can report it to the police by calling 101.',
+                    iconFallbackText: 'Warning'
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

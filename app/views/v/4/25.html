@@ -1,0 +1,76 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Did you identify any modern slavery indicators? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='26' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '25-cond',
+                        name: '25-cond',
+                        value: data['25-cond'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'If you identified modern slavery indicators provide details. ',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: "<p><a href='#'>See section 3 'Identifying potential victims of modern slavery' for examples of modern slavery indicators.</a> Include context about where you noticed these indicators.</p>
+                            <p>As the potential victim has been in more than one exploitive situation, you should include all details from each exploitation in your answer.</p>"
+                        }
+                    }) }} 
+                {% endset %}
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '25',
+                    name: '25',
+                    value: data['25'],
+                    fieldset: {
+                        legend: {
+                            text: 'Did you identify any modern slavery indicators?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: cond
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

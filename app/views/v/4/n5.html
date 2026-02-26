@@ -1,0 +1,181 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Does the child know they have been referred into the NRM? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='pt-end' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                {% set cond1 %}
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n5-1',
+                        name: 'n5-1',
+                        value: data['n5-1'],
+                        label: {
+                            text: "Child's contact telephone number",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+                {% set cond2 %}
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n5-2',
+                        name: 'n5-2',
+                        value: data['n5-2'],
+                        label: {
+                            text: "FOPR's contact telephone number",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+                {% set cond3 %}
+
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'n5-3-name',
+                        name: 'n5-3-name',
+                        value: data['n5-3-name'],
+                        label: {
+                            text: "Name of contact",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n5-3-phone',
+                        name: 'n5-3-phone',
+                        value: data['n5-3-phone'],
+                        label: {
+                            text: "Their contact telephone number",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                    {{ govukInput({
+                        id: 'n5-3-relationship',
+                        name: 'n5-3-relationship',
+                        value: data['n5-3-relationship'],
+                        label: {
+                            text: "Relationship to child",
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset %}
+
+                {% set warning %}
+                    {% from 'govuk/components/warning-text/macro.njk' import govukWarningText %}
+                        
+                    {{ govukWarningText({
+                        text: 'If you provide a telephone number, check that the details you provide are safe and could not potentially put the child in danger.',
+                        iconFallbackText: 'Warning'
+                    }) }}
+                {% endset %}
+    
+
+                {% if (data['fopr'] == "yes") %}
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n5',
+                    name: 'n5',
+                    value: data['n5'],
+                    fieldset: {
+                        legend: {
+                            text: 'How can the support provider safely contact the child?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: warning
+                    },
+                    items: [
+                    {
+                       value: 'Contact the child',
+                        text: 'Contact the child',
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: 'Contact the Figure of Parental Responsibility (FOPR)',
+                        text: 'Contact the Figure of Parental Responsibility (FOPR)',
+                        conditional: {
+                            html: cond2
+                        }
+                    },
+                    {
+                       value: 'Contact someone else',
+                        text: 'Contact someone else',
+                        conditional: {
+                            html: cond3
+                        }
+                    }
+
+                    ]
+                }) }}
+
+                {% else %}
+
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: 'n5',
+                    name: 'n5',
+                    value: data['n5'],
+                    fieldset: {
+                        legend: {
+                            text: 'How can the support provider safely contact the child?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: warning
+                    },
+                    items: [
+                    {
+                       value: 'Contact the child',
+                        text: 'Contact the child',
+                        conditional: {
+                            html: cond1
+                        }
+                    },
+                    {
+                       value: 'Contact someone else',
+                        text: 'Contact someone else',
+                        conditional: {
+                            html: cond3
+                        }
+                    }
+
+                    ]
+                }) }}
+
+                {% endif %}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

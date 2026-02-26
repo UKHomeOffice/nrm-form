@@ -1,0 +1,63 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Where is the potential victim staying? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='34' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                <h1 class='govuk-heading-l'>Where is the potential victim staying?</h1> 
+
+                <p>Select where the potential victim is currently staying. This helps the caseworker know which police force to contact.</p>
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '33-town',
+                    name: '33-town',
+                    value: data['33-town'],
+                    label: {
+                        text: 'Select city or town',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: "<p>Enter 'Unknown' if they are unsure.</p>"
+                    }
+                }) }}
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {{ govukInput({
+                    id: '33-region',
+                    name: '33-region',
+                    value: data['33-region'],
+                    label: {
+                        text: 'Select region ',
+                        classes: 'govuk-label--s',
+                        isPageHeading: false
+                    },
+                    hint: {
+                        html: "<p>Enter 'Unknown' if they are unsure.</p>"
+                    }
+                }) }}
+
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

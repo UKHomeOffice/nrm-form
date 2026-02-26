@@ -1,0 +1,79 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        Was the potential victim taken somewhere by their exploiters? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='18' method='post'>
+
+                {% set opt %}
+                    {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                        
+                    {{ govukCharacterCount({
+                    name: 'moreDetail',
+                        id: '17-other',
+                        name: '17-other',
+                        value: data['17-other'],
+                        maxlength: 15000,
+                        label: {
+                            text: 'Journey details',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        },
+                        hint: {
+                            html: 'Include any routes, places, landmark features, or times'
+                        }
+                    }) }} 
+                {% endset %}
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/radios/macro.njk' import govukRadios %}
+                {{ govukRadios({
+                    id: '17',
+                    name: '17',
+                    value: data['17'],
+                    fieldset: {
+                        legend: {
+                            text: 'Was the potential victim taken somewhere by their exploiters?',
+                            classes: 'govuk-fieldset__legend--l',
+                            isPageHeading: true
+                        }
+                    },
+                    hint: {
+                        html: '<p>Tell us about any journeys the potential victim was taken on, how it began and what transport was used.</p>
+                        <p>Include any details the potential victim remembers about how and where they have been transported, including any routes, places, landmark features, or times.</p>'
+                    },
+                    items: [
+                    {
+                       value: 'Yes',
+                        text: 'Yes',
+                        conditional: {
+                            html: opt
+                        }
+                    },
+                    {
+                       value: 'No',
+                        text: 'No'
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

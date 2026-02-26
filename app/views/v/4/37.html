@@ -1,0 +1,47 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        What information do you have about where the exploiters are now? – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='38' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+    
+                {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+                    
+                {{ govukCharacterCount({
+                name: 'moreDetail',
+                    id: '37',
+                    name: '37',
+                    value: data['37'],
+                    maxlength: 15000,
+                    label: {
+                        text: 'What information do you have about where the exploiters are now?',
+                        classes: 'govuk-label--l',
+                        isPageHeading: true
+                    },
+                    hint: {
+                        html: "<p>Information about the exploiters' location<br>
+                            This can be a general or specific location, or even a contact from another organisation who has this information.</p>"
+                    }
+                }) }} 
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
