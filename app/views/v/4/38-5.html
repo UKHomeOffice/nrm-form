@@ -1,0 +1,93 @@
+{% extends 'layouts/v1.html' %}
+
+{% block pageTitle %}
+How were they exploited? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+<div class='govuk-grid-row'>
+    <div class='govuk-grid-column-two-thirds-from-desktop'>
+        <form action='39' method='post'>
+
+            {% set other %}
+            {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+
+            {{ govukCharacterCount({
+            name: 'moreDetail',
+            id: '38-other',
+            name: '38-other',
+            value: data['38-other'],
+            maxlength: 15000,
+            label: {
+            text: 'Enter other type of exploitation:',
+            classes: 'govuk-label--s',
+            isPageHeading: false
+            }
+            }) }}
+            {% endset %}
+
+            <span class='govuk-caption-l'></span>
+
+            {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+            {{ govukCheckboxes({
+                id: '38-3',
+                name: '38-3',
+                values: data['38-3'],
+                fieldset: {
+                    legend: {
+                        text: 'Who is doing the exploiting?',
+                        classes: 'govuk-fieldset__legend--l',
+                        isPageHeading: true
+                    }
+                },
+                hint: {
+                    html: 'Select all that apply'
+                },
+                items: [
+                {
+                   value: 'Parent',
+                    text: 'Parent'
+                },
+                {
+                   value: 'Partner',
+                    text: 'Partner'
+                },
+                {
+                   value: 'Other family member',
+                    text: 'Other family member'
+                },
+                {
+                   value: 'Non-related exploiter',
+                    text: 'Non-related exploiter'
+                },
+                {
+                   value: 'Diplomatic household',
+                    text: 'Diplomatic household'
+                },
+                {
+                   value: 'Organised crime group',
+                    text: 'Organised crime group'
+                },
+                {
+                   value: 'Unknown?',
+                    text: 'Unknown?'
+                }
+                ]
+            }) }}
+
+
+            <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                {{ govukButton({
+                text: 'Save and continue'
+                }) }}
+                {{ govukButton({
+                href: '6',
+                classes: 'govuk-button--secondary',
+                text: 'Save and exit'
+                }) }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

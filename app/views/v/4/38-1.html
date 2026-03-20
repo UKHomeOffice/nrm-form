@@ -1,0 +1,189 @@
+{% extends 'layouts/v1.html' %}
+
+{% block pageTitle %}
+How were they exploited? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+<div class='govuk-grid-row'>
+    <div class='govuk-grid-column-two-thirds-from-desktop'>
+        <form action='38-2' method='post'>
+
+            {% set other %}
+            {% from 'govuk/components/textarea/macro.njk' import govukTextarea %}
+
+            {{ govukCharacterCount({
+            name: 'moreDetail',
+            id: '38-other',
+            name: '38-other',
+            value: data['38-other'],
+            maxlength: 15000,
+            label: {
+            text: 'Enter other type of exploitation:',
+            classes: 'govuk-label--s',
+            isPageHeading: false
+            }
+            }) }}
+            {% endset %}
+
+            <span class='govuk-caption-l'></span>
+
+
+
+            <div class='govuk-form-group'>
+                <fieldset class='govuk-fieldset' aria-describedby='-hint'>
+                    <legend class='govuk-fieldset__legend govuk-fieldset__legend--l'>
+                        <h1 class='govuk-fieldset__heading'>
+                            In which industry or sector did the exploitation take place?
+                        </h1>
+                    </legend>
+                    <div id='v1-hint' class='govuk-hint'>
+                        Select all that apply
+                    </div>
+
+
+
+                    <div class='govuk-checkboxes govuk-checkboxes--small' data-module='govuk-checkboxes'>
+
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-1' name='labour' type='checkbox'
+                                value='Agriculture / forestry / fishing'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-1'>
+                                Agriculture / forestry / fishing
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-2' name='labour' type='checkbox'
+                                value='Construction / trades'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-2'>
+                                Construction / trades
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-3' name='labour' type='checkbox'
+                                value='Hospitality / food services'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-3'>
+                                Hospitality / food services
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-4' name='labour' type='checkbox'
+                                value='Retail / consumer services'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-4'>
+                                Retail / consumer services
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-5' name='labour' type='checkbox'
+                                value='Beauty and grooming'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-5'>
+                                Beauty and grooming
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-6' name='labour' type='checkbox'
+                                value='Cleaning / maintenance'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-6'>
+                                Cleaning / maintenance
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-7' name='labour' type='checkbox'
+                                value='Care / health services'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-7'>
+                                Care / health services
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item '>
+                            <input class='govuk-checkboxes__input' id='chk-8' name='labour' type='checkbox'
+                                value='Manufacturing / industrial'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-8'>
+                                Manufacturing / industrial
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-9' name='labour' type='checkbox'
+                                value='Logistics / warehousing / transport'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-9'>
+                                Logistics / warehousing / transport
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-10' name='labour' type='checkbox'
+                                value='Maritime / seafaring'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-10'>
+                                Maritime / seafaring
+                            </label>
+                        </div>
+
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-11' name='labour' type='checkbox'
+                                value='Waste / recycling'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-11'>
+                                Waste / recycling
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-12' name='labour' type='checkbox'
+                                value='Professional / digital work'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-12'>
+                                Professional / digital work
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-13' name='labour' type='checkbox'
+                                value='Utilities / infrastructure'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-13'>
+                                Utilities / infrastructure
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-14' name='labour' type='checkbox'
+                                value='Accommodation services'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-14'>
+                                Accommodation services
+                            </label>
+                        </div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-15' name='labour' type='checkbox'
+                                value='Events / temporary labour'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-15'>
+                                Events / temporary labour
+                            </label>
+                        </div>
+
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-16' name='labour' type='checkbox'
+                                value='Street trading / hawking'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-16'>
+                                Street trading / hawking
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__divider">or</div>
+                        <div class='govuk-checkboxes__item'>
+                            <input class='govuk-checkboxes__input' id='chk-17' name='labour' type='checkbox'data-behaviour="exclusive" value='N/A'>
+                            <label class='govuk-label govuk-checkboxes__label' for='chk-17'>
+                                N/A
+                            </label>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                {{ govukButton({
+                text: 'Save and continue'
+                }) }}
+                {{ govukButton({
+                href: '6',
+                classes: 'govuk-button--secondary',
+                text: 'Save and exit'
+                }) }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
