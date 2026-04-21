@@ -1,0 +1,93 @@
+{% extends 'layouts/v1.html' %}
+    
+    {% block pageTitle %}
+        test – {{ serviceName }} – GOV.UK Prototype Kit
+    {% endblock %}
+    
+    
+    {% block content %}
+    <div class='govuk-grid-row'>
+        <div class='govuk-grid-column-two-thirds-from-desktop'>
+            <form action='/route-v-1/' method='post'>
+    
+                <span class='govuk-caption-l'></span>
+
+                <h1 class='govuk-heading-l'>What chemical are you using?</h1> 
+    
+                {% from 'govuk/components/select/macro.njk' import govukSelect %}
+                    
+                {{ govukSelect({
+                    id: 'test',
+                    name: 'test',
+                    label: {
+                        text: 'Chemical name'
+                    },
+                    items: [
+                    {
+                        value: 'Select',
+                        text: 'Select'
+                    },
+                    {
+                        value: '1-phenyl-2-propanone (BMK) ',
+                        text: '1-phenyl-2-propanone (BMK) - 2914 3100'
+                    },
+                    {
+                        value: '3-4 Methylenedioxy-Phenylpropan-2-one (PMK) ',
+                        text: '3-4 Methylenedioxy-Phenylpropan-2-one (PMK) - 2932 9200'
+                    }
+                    ]
+                }) }}
+
+                {% from 'govuk/components/input/macro.njk' import govukInput %}
+                {% set cond %}
+                    {% from 'govuk/components/input/macro.njk' import govukInput %}
+                    {{ govukInput({
+                        id: 'other',
+                        name: 'other',
+                        value: data['other'],
+                        label: {
+                            text: 'Enter the chemical name',
+                            classes: 'govuk-label--s',
+                            isPageHeading: false
+                        }
+                    }) }}
+                {% endset -%}
+                    
+
+                {% from 'govuk/components/checkboxes/macro.njk' import govukCheckboxes %}
+                {{ govukCheckboxes({
+                    id: 'checkboxes',
+                    name: 'checkboxes',
+                    values: data['checkboxes'],
+                    fieldset: {
+                        legend: {
+                            text: 'The chemical is not listed',
+                            classes: 'govuk-fieldset__legend--s hidden',
+                            isPageHeading: false
+                        }
+                    },
+                    items: [
+                    {
+                       value: 'The chemical is not listed',
+                        text: 'The chemical is not listed',
+                        conditional: {
+                            html: cond
+                        }
+                    }
+                    ]
+                }) }}
+    
+               <div class='govuk-button-group govuk-!-padding-top-3 govuk-!-padding-bottom-4'>
+                    {{ govukButton({
+                        text: 'Save and continue'
+                    }) }}
+                    {{ govukButton({
+                        href: '6',
+                        classes: 'govuk-button--secondary',
+                        text: 'Save and exit'
+                    }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
